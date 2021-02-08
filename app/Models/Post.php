@@ -14,7 +14,7 @@ class Post extends Model
     use HasSlug;
 
     // relation to user
-    public function user($id)
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
