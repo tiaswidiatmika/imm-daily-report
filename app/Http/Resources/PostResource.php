@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\User;
+use App\Models\Post;
 
 class PostResource extends JsonResource
 {
@@ -15,15 +16,6 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
-        // id, user id, title, body, created at, updated at
-        return [
-            'id' => $this->id,
-            'written_by' => User::where('id', $this->user_id)->get('name')[0]->name,
-            'title' => $this->title,
-            'body' => $this->body,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ];
+        return parent::toArray($request);
     }
 }
