@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StorePostRequest;
 class PostController extends Controller
 {
     /**
@@ -33,9 +33,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        //
+        $validated = $request->validated();
+        return Post::create([
+            'user_id' => $validated['user_id'],
+            'title' => $validated['title'],
+            'body' => $validated['body'],
+        ]);
     }
 
     /**
