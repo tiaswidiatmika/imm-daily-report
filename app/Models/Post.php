@@ -14,7 +14,7 @@ class Post extends Model
     use HasSlug;
 
     // protected $fillable = ['title', 'body'];
-    protected $guarded = [];
+    protected $fillable = ['title', 'body'];
 
     // relation to user
     public function user()

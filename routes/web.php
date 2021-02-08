@@ -14,10 +14,10 @@ use App\Models\Post;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('post/{id}', function ($id) {
-    return new PostResource(Post::findOrFail($id));
-});
+// Route::get('post/{id}', function ($id) {
+//     return new PostResource(Post::findOrFail($id));
+// });
