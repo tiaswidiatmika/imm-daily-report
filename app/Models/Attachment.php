@@ -9,6 +9,8 @@ class Attachment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['post_id', 'category', 'path'];
+
     public function post($id)
     {
         return $this->belongsTo(Post::class);

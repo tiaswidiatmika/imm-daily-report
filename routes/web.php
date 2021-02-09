@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Resources\PostResource;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +16,18 @@ use App\Models\Post;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('post/{id}', function ($id) {
-//     return new PostResource(Post::findOrFail($id));
-// });
+Route::get('/reports', function(){
+    return Post::all()->sortByDesc('created_at');
+});
+
+Route::get('/reports/create', [PostController::class, 'create'])
+    ->name('create-post'); //create a new report per signed in user
+Route::post('/reports/create', [PostController::class, 'store']); //store newly created post
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
