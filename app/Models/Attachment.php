@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Attachment extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['post_id', 'category', 'path'];
+    
+    protected $fillable = ['title','post_id', 'category', 'path'];
 
     public function post($id)
     {

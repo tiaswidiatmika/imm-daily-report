@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Attachment;
+use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest as StorePost;
 
 class PostController extends Controller
 {
@@ -13,10 +15,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware(['auth'])->only(['create', 'store']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth'])->only(['create', 'store']);
+    // }
 
     public function index()
     {
@@ -40,20 +42,27 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
         
-        Post::create([
-            'user_id' => auth()->user()->id,
-            'title' => $validated['title'],
-            'body' => $validated['body'],
-        ]);
+        $postData = $request->validated(); //has title and body
+        $fileData = array_splice($postData, -4); // has everything but title and body
         
-        return back();
+        $post = auth()->user()->posts()->create([
+            'user_id' => auth()->user()->id
+            ] + $postData
+        );
+
+        $attachment = $post->attachments()->create([
+            'title' => $fileData['attachment_title'],
+            'post_id' => $post->id,
+            'category' => $fileData['category'],
+            'path' => $fileData['path'],
+        ]);
+
+        if ($post && $attachment) {
+            return back();
+        }
     }
 
     /**
