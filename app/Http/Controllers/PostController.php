@@ -44,7 +44,9 @@ class PostController extends Controller
      */
     public function store(StorePost $request)
     {
-        
+        /*
+         * main post builder
+         *=====================================================*/
         $postData = $request->validated(); //has title and body
         $fileData = array_splice($postData, -4); // has everything but title and body
         
@@ -59,6 +61,10 @@ class PostController extends Controller
             'category' => $fileData['category'],
             'path' => $fileData['path'],
         ]);
+
+        /*
+         * main post builder
+         *=====================================================*/
 
         if ($post && $attachment) {
             return back();
