@@ -16,7 +16,7 @@
         "laravel/jetstream": "^2.1",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.0",
+        "livewire/livewire": "^2.3",
         "spatie/laravel-permission": "^4.0",
         "spatie/laravel-sluggable": "^2.6"
     },
@@ -48,7 +48,8 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": ["app/Helpers/helpers.php"]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
