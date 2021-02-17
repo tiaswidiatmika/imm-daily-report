@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\AttentionReportController;
+use App\Http\Controllers\PresenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,16 @@ Route::get('/reports', function(){
 Route::get('/reports/create', [PostController::class, 'create'])
     ->name('create-post'); //create a new report per signed in user
 Route::post('/reports/create', [PostController::class, 'store']); //store newly created post
+
+Route::get('reports/attention-report', [AttentionReportController::class, 'getCurrentShift'])->name('attention-report');
+Route::get('reports/presence', [PresenceController::class, 'index']);
+
+Route::get('formations', function () {
+    return view ('formations.formations');
+    // return User::where('alias', 'like', "%ti%")->first()->pluck('alias');
+    // return User::where('alias', 'like', "%a%")->get();
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttachmentsTable extends Migration
+class CreateAttentionReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('attachments', function (Blueprint $table) {
+        Schema::create('attention_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->foreignId('post_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('category');
-            $table->string('section_name');
-            $table->string('path');
+            $table->text('events');
+            $table->text('summary');
+            $table->text('arrangement_of_events');
+            $table->text('measure');
+            $table->text('conclusion');
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateAttachmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attachments');
+        Schema::dropIfExists('attention_reports');
     }
 }
