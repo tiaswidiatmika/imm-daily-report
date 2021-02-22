@@ -6,9 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @livewireStyles
 </head>
 <body>
-    @include('layouts.includes.navbar')
+    <div class="flex">
+        @include('layouts.includes.sidebar-left')
+        @yield('content')
+    </div>
 
+     
+    @livewireScripts
 </body>
 </html>

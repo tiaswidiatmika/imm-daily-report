@@ -19,12 +19,15 @@ use App\Http\Controllers\PresenceController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/reports', function(){
     return Post::all()->sortByDesc('created_at');
-});
+})->name('all-reports');
 
 Route::get('/reports/create', [PostController::class, 'create'])
     ->name('create-post'); //create a new report per signed in user
@@ -43,3 +46,5 @@ Route::get('formations', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::view('/testing', 'testing-layout');
