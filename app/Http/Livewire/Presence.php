@@ -15,7 +15,10 @@ class Presence extends Component
     public $usersAvailable = [];
     public $usersSickLeave = [];
     public $usersAnnualLeave = [];
-    // public $result;
+    
+    public $selected;
+    public $keys = '';
+    public $array = '';
 
     public function mount()
     {
@@ -32,27 +35,32 @@ class Presence extends Component
         if (empty($this->$wireModel)) {
             return collect();
         }
-        // dd($this->$wireModel);
+        
         $this->users = User::where('alias', 'like', "%{$this->$wireModel}%")->take(10)->get();
-        // return User::where('alias', 'like', '%' . $searchTerm . '%')->take(10)->get();
+        
     }
 
     public function clickResult($result, $wireModel, $userCollectionType)
     {
-        // $userCollectionType = 'user' .
+        
         $this->$wireModel = $result;
-        // $this->$userCollectionType = $result;
+        
         array_push($this->$userCollectionType, $result);
         $this->$wireModel = '';
 
         $this->users = collect();
     }
 
-    public function removeSelectedUser() // $userCollectionType)
+    public function removeSelectedUser($needle, $hayStack)
     {
-        // return 'asdf';
-        dd(collect());
-        // unset($this->$userCollectionType[$index]);
-        // dd($this->userCollectionType);
+        $needleKey = array_search($needle, $this->$hayStack);
+        
+        unset($this->$hayStack[$needleKey]);
+    }
+
+    public function showarray()
+    {
+        $this->array = json_encode($this->usersAvailable);
+        $this->keys = json_encode(array_keys($this->usersAvailable));
     }
 }
