@@ -16,6 +16,17 @@
 
      
     @livewireScripts
+   
+
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <script>
+        function changeFocus (customEvent) { 
+            window.livewire.on(customEvent, inputname => {
+                document.getElementById("wawinput").focus();
+            });
+        }
+        document.addEventListener('livewire:load', changeFocus('usersAvailableSelected'));
+    </script>
+    
 </body>
 </html>

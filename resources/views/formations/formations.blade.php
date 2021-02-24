@@ -5,5 +5,6 @@
         <livewire:presence />
 
     </div>
+    
 
 @endsection

@@ -50,6 +50,8 @@ class Presence extends Component
         $this->$wireModel = '';
 
         $this->users = collect();
+        // $this->searchAvailable = $userCollectionType . "Selected";
+        $this->emit($userCollectionType . 'Selected');
     }
 
     public function removeSelectedUser($needle, $hayStack)

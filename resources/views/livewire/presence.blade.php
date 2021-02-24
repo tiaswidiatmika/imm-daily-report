@@ -1,25 +1,25 @@
 <div>
     {{-- check who is present --}}
     <!--============================================================================================-->
-    <div class="flex-row p-1" x-data="dropDown()">
+    <div class="flex-row p-1">
         <h1 class="block text-2xl">Daily Presence</h1>
         <hr class="border-solid border-2">
         <h2 class="block">In duty</h2>
         
         <input
+            id="wawinput"
             type="text"
             placeholder="select officer(s)"
             wire:model="searchAvailable"
             wire:keyup="search('searchAvailable')"
             class="shadow-lg mb-2 inline-flex"
-            autofocus
         >
 
-        <ul
-            
-            class="flex-row shadow-2xl border border-gray-600 rounded-br-md rounded-bl-md pl-2 pt-1 pb-2 pr-4"
-        >
         @if (!empty( $searchAvailable ))
+            <ul
+                
+                class="flex-row shadow-2xl border border-gray-600 rounded-br-md rounded-bl-md pl-2 pt-1 pb-2 pr-4"
+            >
             
             @if ( ! $users->isEmpty() )
                 @foreach ($users as $user)
@@ -76,4 +76,5 @@
     </div>
     <hr class="border-solid border-1">
     <!--============================================================================================-->
+    
 </div>
