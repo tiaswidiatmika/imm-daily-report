@@ -32,8 +32,9 @@ class Presence extends Component
 
     public function search($wireModel)
     {
-        if (empty($this->$wireModel)) {
-            return collect();
+        if (empty($this->{$wireModel})) {
+            $this->users = collect();
+            return;
         }
         
         $this->users = User::where('alias', 'like', "%{$this->$wireModel}%")->take(10)->get();
