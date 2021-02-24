@@ -1,8 +1,7 @@
 <div>
     {{-- check who is present --}}
     <!--============================================================================================-->
-    <div class="flex-row p-1">
-        
+    <div class="flex-row p-1" x-data="dropDown()">
         <h1 class="block text-2xl">Daily Presence</h1>
         <hr class="border-solid border-2">
         <h2 class="block">In duty</h2>
@@ -16,26 +15,26 @@
             autofocus
         >
 
+        <ul
+            
+            class="flex-row shadow-2xl border border-gray-600 rounded-br-md rounded-bl-md pl-2 pt-1 pb-2 pr-4"
+        >
         @if (!empty( $searchAvailable ))
             
             @if ( ! $users->isEmpty() )
-                <ul
-                    
-                    class="flex-row shadow-2xl border border-gray-600 rounded-br-md rounded-bl-md pl-2 pt-1 pb-2 pr-4"
-                >
                 @foreach ($users as $user)
                         <li
                             wire:click.prevent="clickResult('{{ $user->alias }}', 'searchAvailable', 'usersAvailable')"
-                            class="block border-b-2 transition ease-in-out duration-300">
+                            class="block border-b-2">
                             {{ $user->alias }}
                         </li>
-                        @endforeach
-                    </ul>
+                @endforeach
             @else
-                    No such result
+                <li>No such result</li>
             @endif
         @endif
-
+        </ul>
+                        
         
         {{-- =================================== --}}
         {{-- =============selected users======== --}}
@@ -76,44 +75,5 @@
         
     </div>
     <hr class="border-solid border-1">
-    <!--============================================================================================-->
-    {{-- check annual leave --}}
-        
-    {{-- <h2 class="block">Annual leave</h2>
-
-    <input
-        type="text"
-        placeholder="select officer(s)"
-        wire:model="searchAnnualLeave"
-        wire:keyup="search"
-        class="shadow-lg mb-2"
-    >
-    @if (! $users->isEmpty())
-        @foreach ($users as $user)
-            <div wire:click.prevent="clickResult('{{ $user->alias }}')"> {{ $user->alias }} </div>
-        @endforeach
-    @endif
-
-    <hr class="border-solid border-1"> --}}
-    <!--============================================================================================-->
-
-    {{-- check who callling in sick --}}
-        
-    {{-- <h2 class="block">Sick leave</h2>
-
-    <input
-        type="text"
-        placeholder="select officer(s)"
-        wire:model="searchSickLeave"
-        wire:keyup="search"
-        class="shadow-lg mb-2"
-    >
-    @if (! $users->isEmpty())
-        @foreach ($users as $user)
-            <div wire:click.prevent="clickResult('{{ $user->alias }}')"> {{ $user->alias }} </div>
-        @endforeach
-    @endif
-
-    <hr class="border-solid border-1"> --}}
     <!--============================================================================================-->
 </div>
