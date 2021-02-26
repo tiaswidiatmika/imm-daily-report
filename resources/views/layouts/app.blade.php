@@ -19,12 +19,18 @@
    
 
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+
+
+
     <script>
+        // callback function to handle an event
         function changeFocus (customEvent) { 
             window.livewire.on(customEvent, inputname => {
                 document.getElementById("wawinput").focus();
             });
         }
+
+        // "register" a new custom event when livewire itself fires "livewire:load" event
         document.addEventListener('livewire:load', changeFocus('usersAvailableSelected'));
     </script>
     
