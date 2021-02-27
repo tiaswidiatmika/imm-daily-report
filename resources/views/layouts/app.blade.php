@@ -24,14 +24,15 @@
 
     <script>
         // callback function to handle an event
-        function changeFocus (customEvent) { 
-            window.livewire.on(customEvent, inputname => {
-                document.getElementById("wawinput").focus();
+        function changeFocus (customEvent, inputId) { 
+            window.livewire.on(customEvent, () => {
+                document.getElementById(inputId).focus();
             });
         }
 
         // "register" a new custom event when livewire itself fires "livewire:load" event
-        document.addEventListener('livewire:load', changeFocus('usersAvailableSelected'));
+        document.addEventListener('livewire:load', changeFocus('usersAvailableSelected', 'searchAvailable'));
+        document.addEventListener('livewire:load', changeFocus('usersSickLeaveSelected', 'searchSickLeave'));
     </script>
     
 </body>
