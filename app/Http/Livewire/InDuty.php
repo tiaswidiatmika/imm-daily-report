@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 
-class Presence extends Component
+class InDuty extends Component
 {
     public $allowDuplicateSearches = false;
     public $searchAvailable = '';
@@ -27,7 +27,7 @@ class Presence extends Component
 
     public function render()
     {
-        return view('livewire.presence');
+        return view('livewire.in-duty');
     }
 
     public function search($wireModel)
@@ -56,7 +56,7 @@ class Presence extends Component
 
     public function removeSelectedUser($needle, $hayStack)
     {
-        $needleKey = array_search($needle, $this->$hayStack);
+        $needleKey = array_search($needle, $this->{$hayStack});
         
         unset($this->$hayStack[$needleKey]);
     }

@@ -89,9 +89,6 @@
     
 
     <div class="block">
-        Tembusan: <br />
-        1. Kepala Bidang Tempat Pemeriksaan Imigrasi (sebagai laporan); <br />
-        2. Kepala Bidang Intelijen dan Penindakan Keimigrasian; <br />
-        3. Kepala Bidang Teknologi Informasi dan Komunikasi Keimigrasian <br />
+        {!! $post->tembusan !!}
     </div>
 </div>

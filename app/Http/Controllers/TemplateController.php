@@ -2,28 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\Attachment;
+use App\Models\Template;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePostRequest as StorePost;
 
-class PostController extends Controller
+class TemplateController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth'])->only(['create', 'store']);
-    // }
-
     public function index()
     {
-        // view all posts by all user in descending order
-        
+        //
     }
 
     /**
@@ -33,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('post.create-template');
     }
 
     /**
@@ -44,36 +35,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-    }
-    
-    public function storeBak(StorePost $request)
-    {
-        /*
-         * main post builder
-         *=====================================================*/
-        $postData = $request->validated(); //has title and body
-        $fileData = array_splice($postData, -4); // has everything but title and body
+        $validated = $request->validate([
+            // 'templateName' => 'required',
+            'case' => 'required',
+            // 'summary' => 'required',
+            // 'chronology' => 'required',
+            // 'measure' => 'required',
+            // 'conclusion' => 'required',
+        ]);
         
-        $post = auth()->user()->posts()->create([
-            'user_id' => auth()->user()->id
-            ] + $postData
-        );
-
-        $attachment = $post->attachments()->create([
-            'title' => $fileData['attachment_title'],
-            'post_id' => $post->id,
-            'category' => $fileData['category'],
-            'path' => $fileData['path'],
+        Template::create([
+            'case' => $validated['case']
         ]);
 
-        /*
-         * main post builder
-         *=====================================================*/
+    }
 
-        if ($post && $attachment) {
-            return back();
-        }
+    public function sandbox()
+    {   
+        $id = 1;
+        $inputs = Template::find($id)->setupInputs();
+        
+        return view('livewire.templates.inputs-components', [
+            'inputNames' => $inputs
+        ]);
     }
 
     /**

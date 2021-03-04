@@ -2,7 +2,7 @@
     {{-- check who is present --}}
     <!--============================================================================================-->
     <div class="flex-row p-1">
-        <h1 class="block text-2xl">Daily Presence</h1>
+        <h1 class="block text-2xl">Presence</h1>
         <hr class="border-solid border-2">
         <h2 class="block">In duty</h2>
         
