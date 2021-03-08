@@ -13,8 +13,8 @@ class Post extends Model
     use HasFactory;
     use HasSlug;
 
-    
-    protected $fillable = ['user_id','title', 'case', 'summary', 'chronology', 'measure', 'conclusion', 'tembusan'];
+    // protected $fillable = ['template_name', 'case', 'summary', 'chronology', 'measure', 'conclusion'];
+    protected $fillable = ['user_id','title', 'case', 'summary', 'chronology', 'measure', 'conclusion', 'tanggal_nesia'];
 
     // relation to user
     public function user()

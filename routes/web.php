@@ -15,30 +15,51 @@ use App\Http\Controllers\TemplateController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('layouts.app');
-});
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::get('/reports', function(){
-    return Post::all()->sortByDesc('created_at');
-})->name('all-reports');
-
-Route::get('/create-template', [TemplateController::class, 'create'])->name('create-template');
-Route::post('/create-template', [TemplateController::class, 'store']);
-
-
-Route::get('/create-from-template', [TemplateController::class, 'sandbox'] )->name('create-from-template');
-Route::post('/create-from-template', [TemplateController::class, 'sandboxPost']);
+// =================================================================
+Route::get('/', function () {
+    return view('layouts.app');
+});
 
 
 Route::get('/create', [PostController::class, 'create'])
     ->name('create-report');
 
-Route::post('/create', [PostController::class, 'store']);
+
+Route::get('/reports', [PostController::class, 'index'])
+    ->name('all-reports');
+Route::get('reports/{id}', [PostController::class, 'show']);
+
+Route::get('/create-template', [TemplateController::class, 'create'])
+    ->name('create-template');
+Route::post('/create-template', [TemplateController::class, 'store']);
+
+Route::get('/create-from-template', [TemplateController::class, 'index'])
+    ->name('create-from-template');
+Route::get('/create-from-template/{id}', [TemplateController::class, 'createFromTemplate'] );
+Route::post('/create-from-template', [PostController::class, 'storeFromTemplate']);
+
+// Route::get('/template-list', [TemplateController::class, 'index'] )
+//     ->name('template-list');
+// Route::post('/create-from-template', [TemplateController::class, 'sandboxPost']);
+
+Route::get('formations', function () {
+    return view ('formations.formations');
+    // return User::where('alias', 'like', "%ti%")->first()->pluck('alias');
+    // return User::where('alias', 'like', "%a%")->get();
+});
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+// =============================================================
+// ==========ampas============================================
+
+// Route::post('/create', [PostController::class, 'store']);
 
 
 // Route::get('/reports/create', [PostController::class, 'create'])
@@ -48,13 +69,4 @@ Route::post('/create', [PostController::class, 'store']);
 // Route::get('reports/attention-report', [AttentionReportController::class, 'getCurrentShift'])->name('attention-report');
 // Route::get('reports/presence', [PresenceController::class, 'index']);
 
-Route::get('formations', function () {
-    return view ('formations.formations');
-    // return User::where('alias', 'like', "%ti%")->first()->pluck('alias');
-    // return User::where('alias', 'like', "%a%")->get();
-});
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');

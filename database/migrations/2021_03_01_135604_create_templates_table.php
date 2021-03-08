@@ -15,12 +15,13 @@ class CreateTemplatesTable extends Migration
     {
         Schema::create('templates', function (Blueprint $table) {
             $table->id();
-            // $table->string('template_name');
+            $table->string('template_name');
+            $table->string('slug');
             $table->text('case');
             $table->text('summary');
-            // $table->text('chronology');
-            // $table->text('measure');
-            // $table->text('conclusion');
+            $table->text('chronology');
+            $table->text('measure');
+            $table->text('conclusion');
 
             $table->timestamps();
         });

@@ -1,4 +1,6 @@
-<div class="m-3">
+@extends('layouts.app')
+@section('content')
+<div class="m-2">
     {{-- ==========================header============================= --}}
     <div class="flex center">
         <img src="{{ asset('storage/logo kecil.jpg') }}" alt="logo kecil" srcset="" class="w-12 h-12 self-center" />
@@ -78,7 +80,7 @@
     </table>
 
     <div class="flex justify-end mt-4 mr-16">
-        Badung, 02 Februari 2021 <br />
+        Badung, {{ $post->tanggal_nesia }} <br />
         Kepala Seksi Pemeriksaan IV
     </div>
     
@@ -95,3 +97,7 @@
         <p>3. Kepala Bidang Teknologi Informasi dan Komunikasi Keimigrasian</p>
     </div>
 </div>
+
+    
+
+@endsection

@@ -76,10 +76,7 @@ class PostSeeder extends Seeder
                     terhadap 3 (Tiga) orang kru stay on board Pesawat CI
                     2771 dengan rute penerbangan Denpasar-Taipei.
                 </p>",
-            'tembusan' => '<p>Tembusan:</p>
-            <p>1. Kepala Bidang Tempat Pemeriksaan Imigrasi (sebagai laporan);</p>
-            <p>2. Kepala Bidang Intelijen dan Penindakan Keimigrasian;</p>
-            <p>3. Kepala Bidang Teknologi Informasi dan Komunikasi Keimigrasian</p>'
+            'tanggal_nesia' => 'Senin, 31 Februari 2021'
         ]);
     }
 }

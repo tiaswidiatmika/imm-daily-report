@@ -14,7 +14,10 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        //
+        $templateList = Template::all();
+        return view('post.existing-template', [
+            'templateList' => $templateList
+        ]);
     }
 
     /**
@@ -36,26 +39,25 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            // 'templateName' => 'required',
+            'template_name' => 'required',
             'case' => 'required',
-            // 'summary' => 'required',
-            // 'chronology' => 'required',
-            // 'measure' => 'required',
-            // 'conclusion' => 'required',
+            'summary' => 'required',
+            'chronology' => 'required',
+            'measure' => 'required',
+            'conclusion' => 'required',
         ]);
         
-        Template::create([
-            'case' => $validated['case']
-        ]);
-
+        Template::create($validated);
+        
+        return redirect('/create');
     }
 
-    public function sandbox()
+    public function createFromTemplate($id)
     {   
-        $id = 1;
-        $inputs = Template::find($id)->setupInputs();
-        
+        $template = Template::find($id);
+        $inputs = $template->setupInputs();
         return view('livewire.templates.inputs-components', [
+            'template' => $template,
             'inputNames' => $inputs
         ]);
     }

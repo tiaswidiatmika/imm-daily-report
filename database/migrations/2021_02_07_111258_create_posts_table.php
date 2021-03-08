@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->text('chronology');
             $table->text('measure');
             $table->text('conclusion');
-            $table->text('tembusan');
+            $table->string('tanggal_nesia');
             $table->string('slug')->nullable();
             $table->timestamps();
         });

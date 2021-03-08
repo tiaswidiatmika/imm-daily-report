@@ -2,17 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Template extends Model
 {
     use HasFactory;
-    
-    // protected $fillable = ['template_name', 'case', 'summary', 'chronology', 'measure', 'conclusion'];
-    protected $fillable = ['case', 'summary'];
+    use HasSlug;
 
-    public function fillablesSentences()
+    
+    protected $fillable = ['template_name', 'case', 'summary', 'chronology', 'measure', 'conclusion'];
+    
+    public function getFillables()
+    {
+        return $this->fillable;
+    }
+    protected function fillablesSentences()
     {
         $sentence = '';
         foreach ($this->fillable as $key => $value) {
@@ -21,24 +28,52 @@ class Template extends Model
         return $sentence;
     }
 
-    public function setupInputs()
+    public function extractWords()
     {
-        // get all word containing square brackets []
-        $pattern = '/\[\w*\]/i';
+        $pattern = '/\[.*?\]/';
 
         preg_match_all($pattern, $this->fillablesSentences(), $matches);
-        $uniqueMatches = array_unique($matches[0]);
-        // get unique matches, but still contains []
+        return $matches[0];
+        // return matches, but still in square brackets
+    }
+    
+    public function getUniqueWords()
+    {
 
+        return array_unique($this->extractWords());
+        // get unique matches, but still contains []
+    }
+
+    public function setupInputs()
+    {
         $textTypeInputName = [];
         $replaceSquareBracketsPattern = '/\[|\]/';
-        foreach ($uniqueMatches as $match) {
+        foreach ($this->getUniqueWords() as $match) {
             $textTypeInputName[] = preg_replace($replaceSquareBracketsPattern, '', $match);
         }
 
         // result, array with only word
         return $textTypeInputName;
         
+    }
+
+    // generate slugs
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('template_name')
+            ->saveSlugsTo('slug');
+    }
+
+    public function getRouteKey()
+	{
+        return $this->slug;
+	}
+
+    // Get the route key for the model.
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 }
