@@ -9,5 +9,11 @@ class Formation extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['group', 'kasi', 'spv', 'opis', 'paspor_indonesia', 'diplomatik', 'foreigner', 'tata_usaha', 'protokoler', 'kru', 'honorer'];
+    // protected $fillable = ['group', 'kasi', 'spv', 'opis', 'paspor_indonesia', 'diplomatik', 'foreigner', 'tata_usaha', 'protokoler', 'kru', 'honorer'];
+    protected $fillable = ['foreigner', 'paspor_indonesia'];
+    
+    public function getFillables()
+    {
+        return $this->fillable;
+    }
 }
