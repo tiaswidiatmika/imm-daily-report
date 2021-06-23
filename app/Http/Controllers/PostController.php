@@ -264,4 +264,15 @@ class PostController extends Controller
     {
         return view('sections.arrival');
     }
+
+    public function departure()
+    {
+        return view('sections.departure');
+    }
+
+    public function selatan()
+    {
+        return view('sections.selatan');
+    }
+    
 }

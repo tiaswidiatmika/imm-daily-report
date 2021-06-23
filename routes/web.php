@@ -33,8 +33,20 @@ Route::get('/create', [PostController::class, 'create'])
 
 Route::get('/reports', [PostController::class, 'index'])
     ->name('all-reports');
+
+// !! start of report section
 Route::get('reports/arrival', [PostController::class, 'arrival'])
     ->name('arrival');
+
+Route::get('reports/departure', [PostController::class, 'departure'])
+    ->name('departure');
+
+Route::get('reports/selatan', [PostController::class, 'selatan'])
+    ->name('selatan');
+
+// !! end of report section
+
+
 Route::get('reports/{id}', [PostController::class, 'show']);
 
 Route::get('/create-template', [TemplateController::class, 'create'])
