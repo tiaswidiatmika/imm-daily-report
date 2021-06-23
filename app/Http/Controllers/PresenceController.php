@@ -32,10 +32,6 @@ class PresenceController extends Controller
         foreach ($tableColumns as $column) {
             $formations[$column] = $this->transformsToFullName($request[$column]);
         }
-
-        dd($formations);
-
-        // todo DISABLE ALLOW DUPLICATE SEARCH
         Formation::insert($formations);
     }
 

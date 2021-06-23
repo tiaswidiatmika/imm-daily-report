@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('alias');
             $table->string('name');
             $table->string('nip')->nullable();
-            $table->string('created_by')->default('system');
+            $table->string('role')->default('staff');
+            $table->string('created_by')->default('db seeder');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

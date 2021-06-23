@@ -3,6 +3,8 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\TemplateController;
 
 /*
@@ -20,7 +22,8 @@ use App\Http\Controllers\TemplateController;
 // });
 // =================================================================
 Route::get('/', function () {
-    return view('layouts.app');
+    // return view('layouts.app');
+    return view('homepage');
 });
 
 
@@ -46,9 +49,12 @@ Route::post('/create-from-template', [PostController::class, 'storeFromTemplate'
 // Route::post('/create-from-template', [TemplateController::class, 'sandboxPost']);
 
 Route::get('formations', function () {
-    return view ('formations.formations');
-    // return User::where('alias', 'like', "%ti%")->first()->pluck('alias');
-    // return User::where('alias', 'like', "%a%")->get();
+    return view ('formations.index');
+})->name('create-laporan-absensi');
+Route::post('formations', [PresenceController::class, 'store']);
+
+Route::get('absensi', function () {
+    return view('post.absensi.laporan-absensi');
 });
 
 

@@ -11,13 +11,14 @@ class InDuty extends Component
 
     // ! properties used for search input "Konter Foreigner"
     public $searchKonterForeigner = '';
-    // public $usersKonterForeigner = ['Maida', 'Sembara'];
-    public $usersKonterForeigner;
+    public $usersKonterForeigner = [];
+    // public $usersKonterForeigner;
     public $usersExcluded;
 
     // ! properties  for search input "Konter Indonesia"
     public $searchKonterIndonesia = '';
-    public $usersKonterIndonesia;
+    public $usersKonterIndonesia = [];
+    // public $usersKonterIndonesia;
     // ! properties used for search input "Sakit"
     public $searchSakit = '';
     public $usersSakit = [];
@@ -30,8 +31,8 @@ class InDuty extends Component
         $this->users = [];
         $this->usersExcluded = [];
 
-        $this->usersKonterForeigner = [];
-        $this->usersKonterIndonesia = [];
+        // $this->usersKonterForeigner = [];
+        // $this->usersKonterIndonesia = [];
     }
 
     public function render()

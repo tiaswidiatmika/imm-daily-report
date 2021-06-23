@@ -2,33 +2,10 @@
 @section('content')
 <div class="m-2">
     {{-- ==========================header============================= --}}
-    <div class="flex center">
-        <img src="{{ asset('storage/logo kecil.jpg') }}" alt="logo kecil" srcset="" class="w-12 h-12 self-center" />
-        <p class="p-4 ml-1 text-xs">
-            <b>
-                Kantor Imigrasi Kelas I Khusus TPI Ngurah Rai <br />
-                Bidang Tempat Pemeriksaan Imigrasi <br />
-                Seksi Pemeriksaan IV <br />
-            </b>
-        </p>
-    </div>      
+    @include('post.includes.header')
 
     {{-- ========================kop surat============================== --}}
-    <div class="flex border-b-4 border-black self-start px-10 py-5">
-        <img src="https://i.pinimg.com/564x/44/96/1c/44961c5aad3335279251473f987e1849.jpg" alt="logo pengayom kecil" srcset="" class="h-24 self-center" />
-        <div class="m-auto susik  transform scale-x-125 scale-y-110">
-        <p class="text-center">
-            KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA <br />
-            KANTOR WILAYAH BALI <br />
-            KANTOR IMIGRASI KELAS I KHUSUS TPI NGURAH RAI <br />
-        </p>
-        <p class="text-xs text-center">
-            Jalan Perum Taman Jimbaran No. 1 Jimbaran, Kuta Selatan, Badung, Bali <br />
-            Telepon/Faksimili: 0361-9551038,0361-8568395/0361-9357011 <br />
-            Laman: www.ngurahrai.imigrasi.go.id, Email: kanim_ngurahrai@imigrasi.go.id <br />
-        </p>
-        </div>
-    </div>
+    @include('post.includes.kop-surat')
 
     {{-- ========================kepada yth================================= --}}
     <div class="mt-5 mr-24 mb-5 flex justify-end">

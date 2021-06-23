@@ -15,18 +15,18 @@ class CreateFormationsTable extends Migration
     {
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
-            $table->string('group');
-            $table->string('kasi');
-            $table->string('spv');
-            $table->string('opis');
-            $table->string('paspor_indonesia');
-            $table->string('diplomatik');
-            $table->string('foreigner');
-            $table->string('tata_usaha');
-            $table->string('protokoler');
-            $table->string('kru');
-            $table->string('honorer');
-            $table->string('other');
+            $table->string('group')->nullable();
+            $table->string('kasi')->nullable();
+            $table->string('spv')->nullable();
+            $table->string('opis')->nullable();
+            $table->string('paspor_indonesia')->nullable();
+            $table->string('diplomatik')->nullable();
+            $table->string('foreigner')->nullable();
+            $table->string('tata_usaha')->nullable();
+            $table->string('protokoler')->nullable();
+            $table->string('kru')->nullable();
+            $table->string('honorer')->nullable();
+            $table->string('other')->nullable();
 
             $table->timestamps();
         });

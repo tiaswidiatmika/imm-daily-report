@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @livewireStyles
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="flex">
@@ -22,7 +23,7 @@
 
 
 
-    <script>
+    {{-- <script>
         // callback function to handle an event
         function changeFocus (customEvent, inputId) { 
             window.livewire.on(customEvent, () => {
@@ -31,9 +32,11 @@
         }
 
         // "register" a new custom event when livewire itself fires "livewire:load" event
-        document.addEventListener('livewire:load', changeFocus('usersAvailableSelected', 'searchAvailable'));
-        document.addEventListener('livewire:load', changeFocus('usersSickLeaveSelected', 'searchSickLeave'));
-    </script>
+        document.addEventListener('livewire:load', changeFocus('usersKonterForeignerselected', 'searchKonterForeigner'));
+        document.addEventListener('livewire:load', changeFocus('usersKonterIndonesiaselected', 'searchKonterIndonesia'));
+        document.addEventListener('livewire:load', changeFocus('usersSakitselected', 'searchSakit'));
+
+    </script> --}}
     
 </body>
 </html>
