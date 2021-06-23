@@ -33,6 +33,8 @@ Route::get('/create', [PostController::class, 'create'])
 
 Route::get('/reports', [PostController::class, 'index'])
     ->name('all-reports');
+Route::get('reports/arrival', [PostController::class, 'arrival'])
+    ->name('arrival');
 Route::get('reports/{id}', [PostController::class, 'show']);
 
 Route::get('/create-template', [TemplateController::class, 'create'])
@@ -47,6 +49,9 @@ Route::post('/create-from-template', [PostController::class, 'storeFromTemplate'
 // Route::get('/template-list', [TemplateController::class, 'index'] )
 //     ->name('template-list');
 // Route::post('/create-from-template', [TemplateController::class, 'sandboxPost']);
+Route::get('sections', function () {
+    return view('sections.index');
+})->name('sections-list');
 
 Route::get('formations', function () {
     return view ('formations.index');

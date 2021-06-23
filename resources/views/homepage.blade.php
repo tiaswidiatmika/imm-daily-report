@@ -9,10 +9,11 @@
     </h1>
     
     <a
-        href="{{ route('create-laporan-absensi') }}"
+        {{-- href="{{ route('create-laporan-absensi') }}" --}}
+        href="{{ route('sections-list') }}"
         class="flex px-2 py-2 bg-indigo-600 w-full hover:bg-indigo-800 rounded-lg text-blue-200 cursor-pointer justify-center"
     >
-        create today's report
+        pick a section
     </a>
 
 

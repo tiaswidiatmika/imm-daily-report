@@ -259,4 +259,9 @@ class PostController extends Controller
     {
         //
     }
+
+    public function arrival()
+    {
+        return view('sections.arrival');
+    }
 }
