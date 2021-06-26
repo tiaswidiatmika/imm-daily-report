@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Template;
 use App\Models\Attachment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AttachmentUploadController;
 use App\Http\Requests\StorePostRequest as StorePost;
 
 class PostController extends Controller
@@ -171,6 +172,7 @@ class PostController extends Controller
 
     public function storeFromTemplate(Request $request)
     {
+        
         $newPost = $this->interpolateStringFromTemplate($request->templateId, $request);
         // protected $fillable = ['user_id','title', 'case', 'summary', 'chronology', 'measure', 'conclusion', 'tanggal_nesia'];
         $newPost = $this->htmlMarkup($newPost);
@@ -181,6 +183,7 @@ class PostController extends Controller
                 'user_id' => 1
             ] + $newPost
         );
+        AttachmentUploadController::store($request, $post->id);
 
         return view('post.show-post', [
             'post' => $post]

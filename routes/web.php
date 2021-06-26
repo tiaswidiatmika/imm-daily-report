@@ -62,6 +62,9 @@ Route::get('absensi', function () {
     return view('post.absensi.laporan-absensi');
 });
 
+Route::get('add-attachment', function () {
+    return view('post.attachment.add-attachment');
+})->name('add-attachment');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

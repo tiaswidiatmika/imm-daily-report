@@ -20,8 +20,7 @@ class CreateAttachmentsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('category');
-            $table->string('section_name');
+            $table->string('image_name');            
             $table->string('path');
             $table->timestamps();
         });
