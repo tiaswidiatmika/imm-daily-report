@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('section');
             $table->text('title'); // to hold hari, tanggal, waktu, tempat kejadian
             // $table->text('location');
             $table->text('case');

@@ -34,19 +34,6 @@ Route::get('/create', [PostController::class, 'create'])
 Route::get('/reports', [PostController::class, 'index'])
     ->name('all-reports');
 
-// !! start of report section
-Route::get('reports/arrival', [PostController::class, 'arrival'])
-    ->name('arrival');
-
-Route::get('reports/departure', [PostController::class, 'departure'])
-    ->name('departure');
-
-Route::get('reports/selatan', [PostController::class, 'selatan'])
-    ->name('selatan');
-
-// !! end of report section
-
-
 Route::get('reports/{id}', [PostController::class, 'show']);
 
 Route::get('/create-template', [TemplateController::class, 'create'])
@@ -55,7 +42,8 @@ Route::post('/create-template', [TemplateController::class, 'store']);
 
 Route::get('/create-from-template', [TemplateController::class, 'index'])
     ->name('create-from-template');
-Route::get('/create-from-template/{id}', [TemplateController::class, 'createFromTemplate'] );
+Route::get('/create-from-template/{id}', [TemplateController::class, 'createFromTemplate'] )
+    ->name('use-template');
 Route::post('/create-from-template', [PostController::class, 'storeFromTemplate']);
 
 // Route::get('/template-list', [TemplateController::class, 'index'] )

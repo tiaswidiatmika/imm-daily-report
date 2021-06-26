@@ -10,7 +10,10 @@
                     class="px-2 py-1 text-gray-600 m-1"
                 > {{ $key+1 . '. ' . $template->template_name }} </span>
                 
-                <a href="{{ url('create-from-template', ['id' => $template->id]) }}"
+                <a href="{{ route('use-template', [
+                    'id' => $template->id,
+                    'ref' => $ref
+                    ]) }}"
 
                     class="py-1 px-2 m-1 bg-blue-500 text-blue-50 hover:bg-blue-600"
                 >use</a>

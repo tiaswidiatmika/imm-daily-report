@@ -176,7 +176,10 @@ class PostController extends Controller
         $newPost = $this->htmlMarkup($newPost);
 
         $post = Post::create(
-            ['user_id' => 1] + $newPost
+            [
+                'section' => $request->ref,
+                'user_id' => 1
+            ] + $newPost
         );
 
         return view('post.show-post', [
@@ -260,19 +263,4 @@ class PostController extends Controller
         //
     }
 
-    public function arrival()
-    {
-        return view('sections.arrival');
-    }
-
-    public function departure()
-    {
-        return view('sections.departure');
-    }
-
-    public function selatan()
-    {
-        return view('sections.selatan');
-    }
-    
 }

@@ -18,6 +18,7 @@ class PostSeeder extends Seeder
         $date = strtoupper(Carbon::parse(Carbon::now()->locale('id'))->format('D, d F Y'));
         // protected $fillable = ['user_id','title', 'case', 'summary', 'chronology', 'measure', 'conclusion'];
         Post::create([
+            'section' => 'arrival',
             'user_id' => 1,
             'title' =>
                 "<table>

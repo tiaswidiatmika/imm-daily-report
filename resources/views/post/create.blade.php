@@ -1,12 +1,14 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
-@section('content')
-    <div x-data="{ isOpen: false }">
+@section('content') --}}
+    <div
+        class="create-options"
+        x-data="{ isOpen: false }">
         <x-post.post-option />
         
         <form action="{{ route('create-report') }}" method="POST"
             class="w-full"
-            x-show="isOpen"    
+            x-show="isOpen"
         >
             @method('POST')
             @csrf
@@ -18,4 +20,4 @@
             >submit</button>
         </form>
     </div>
-@endsection
+{{-- @endsection --}}

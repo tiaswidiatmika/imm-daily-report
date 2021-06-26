@@ -4,7 +4,6 @@
             <h2 class="block mt-5 mb-3">Di Konter Foreigner: </h2>
             {{-- <h2 class="block mt-5 mb-3">excluded: {!! json_encode($usersExcluded) !!}</h2> --}}
         </div>
-
     {{-- SHOWS LIST OF USERS SELECTED --}}
     @if ( $usersKonterForeigner !== [] )
         @foreach ($usersKonterForeigner as $user)

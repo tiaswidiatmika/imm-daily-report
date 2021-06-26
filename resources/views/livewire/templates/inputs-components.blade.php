@@ -18,6 +18,7 @@
         </div>
         @endforeach
 
+        <input type="hidden" name="ref" value="{{ $ref }}">
         <input type="hidden" name="templateId" value="{{ $template->id }}">
         <button type="submit"
             class="p-2 bg-blue-500 text-blue-50 hover:bg-blue-600 block w-full mt-3"

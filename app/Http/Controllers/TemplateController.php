@@ -12,12 +12,15 @@ class TemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $ref = $request->query('ref'); //ref can be 'arrival', 'departure', 'selatan',
+        // dd($ref);
         $templateList = Template::all();
         return view('post.existing-template', [
-            'templateList' => $templateList
-        ]);
+            'templateList' => $templateList,
+            
+        ])->with(compact('ref'));
     }
 
     /**
@@ -52,14 +55,18 @@ class TemplateController extends Controller
         return redirect('/create');
     }
 
-    public function createFromTemplate($id)
+    public function createFromTemplate(Request $request, $id)
     {   
+        $ref = $request->query('ref');
         $template = Template::find($id);
         $inputs = $template->setupInputs();
         return view('livewire.templates.inputs-components', [
             'template' => $template,
-            'inputNames' => $inputs
-        ]);
+            'inputNames' => $inputs,
+        ])->with(compact('ref'));
+            // sebenernya bisa aja sih gak pake with, pake di array parameter kedua view
+            // jadinya 'ref' => $ref
+
     }
 
     /**
