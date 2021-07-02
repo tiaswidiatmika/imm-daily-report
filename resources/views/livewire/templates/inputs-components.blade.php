@@ -45,7 +45,8 @@
                 <input
                     type="file"
                     class="border border-gray-300 w-full"
-                    name="image"
+                    name="image[]"
+                    multiple
                 >
             </div>
         </div>

@@ -186,8 +186,9 @@ class PostController extends Controller
         AttachmentUploadController::store($request, $post->id);
 
         return view('post.show-post', [
-            'post' => $post]
-        );
+            'post' => $post,
+            'attachment' => $post->attachments()->where('post_id', '=', $post->id)->get()
+        ]);
     }
     
     public function storeBak(StorePost $request)
