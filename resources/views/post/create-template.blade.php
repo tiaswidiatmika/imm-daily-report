@@ -42,7 +42,7 @@
         <textarea name="conclusion" id="conclusion" cols="30" rows="10">{{ old('conclusion') }}</textarea>
         <x-post.error-validation attribute="conclusion" />
     </div>
-        <input type="hidden" name="section" value="{{ $ref }}">
+        {{-- <input type="hidden" name="section" value="{{ $ref }}"> --}}
         <button type="submit"
             class="px-1.5 py-1 ml-10 bg-blue-400 text-blue-50 hover:text-blue-100 hover:bg-blue-500"
         >kirim</button>
